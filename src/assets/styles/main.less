@@ -1,0 +1,176 @@
+@import 'config/vars.less';
+@import 'config/reset.less';
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap');
+
+@bpMobile: ~'screen and (max-width: 1023px)';
+
+.px2rem(@pixels) {
+    @res: unit((@pixels / @base-font-size), rem);
+}
+
+.w-100 {
+    width: 100%;
+}
+
+body {
+    background-color: #colors[bg_body];
+    color: #colors[fg_body];
+    width: 100vw;
+    height: 100vh;
+}
+
+header {
+    background-color: #colors[bg_header];
+    color: #colors[fg_header];
+}
+
+main {
+    padding: .px2rem(16px) [ @res] 0;
+
+    .container {
+        display: grid;
+        grid-template-columns: 40% 58%;
+        column-gap: 2%;
+
+        @media @bpMobile {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}
+
+h1 {
+    font-family: #fonts[title];
+    font-size: .px2rem(32px) [ @res];
+
+    @media @bpMobile {
+        font-size: .px2rem(24px) [ @res];
+        text-align: center;
+    }
+}
+
+h2 {
+    font-family: #fonts[title];
+    font-size: .px2rem(24px) [ @res];
+    margin-bottom: .px2rem(16px) [ @res];
+    line-height: .px2rem(30px) [ @res];
+
+    @media @bpMobile {
+        font-size: .px2rem(18px) [ @res];
+    }
+}
+
+form {
+    margin-bottom: .px2rem(32px) [ @res];
+    text-align: right;
+
+    div {
+        margin-bottom: .px2rem(16px) [ @res];
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+label {
+    font-weight: bold;
+
+    @media @bpMobile {
+        margin-right: .px2rem(8px) [ @res];
+    }
+}
+
+input {
+    padding: .px2rem(8px) [ @res];
+    width: 160px;
+    background-color: #colors[bg_input];
+    color: #colors[fg_input];
+    border-radius: .px2rem(3px) [ @res];
+    border: solid 1px #colors[fg_body];
+    font-family: #fonts[title];
+    font-size: .px2rem(18px) [ @res];
+    font-weight: bold;
+    text-align: center;
+    outline-color: #colors[outline];
+}
+
+button {
+    padding: .px2rem(16px) [ @res];
+    font-family: #fonts[title];
+    font-weight: bold;
+    font-size: .px2rem(16px) [ @res];
+    border-radius: .px2rem(8px) [ @res];
+    background-color: #colors[bg_button];
+    color: #colors[fg_button];
+    border: none;
+    transition: all ease 0.4s;
+    cursor: pointer;
+
+    &:hover {
+        background-color: lighten(#colors[bg_button], 5%);
+    }
+}
+
+#results {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+
+    div {
+        .w-100();
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: .px2rem(12px) [ @res];
+
+        span {
+            font-size: .px2rem(18px) [ @res];
+            font-weight: bold;
+            color: #colors[fg_result];
+        }
+    }
+}
+
+.graph {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h2 {
+        text-align: center;
+        display: none;
+
+        @media @bpMobile {
+            text-align: left;
+        }
+    }
+
+    @media @bpMobile {
+        margin-top: .px2rem(32px) [ @res];
+    }
+}
+
+canvas {
+    width: 500px;
+    height: 312px;
+    background-color: #colors[bg_canvas];
+    border: solid 1px #colors[border_canvas];
+    border-radius: .px2rem(4px) [ @res];
+    display: none;
+
+    @media @bpMobile {
+        width: 350px;
+        height: 234px;
+    }
+}
+
+.container {
+    max-width: 1024px;
+    .w-100();
+    margin: 0 auto;
+    padding: .px2rem(24px) [ @res] 0;
+
+    @media @bpMobile {
+        width: 90%;
+    }
+}
